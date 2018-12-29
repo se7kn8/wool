@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "side": "block/furnace_side",
+    "top": "wool:block/shearer_top",
+    "bottom": "block/furnace_top"
+  }
+}

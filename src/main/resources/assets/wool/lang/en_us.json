@@ -1,0 +1,9 @@
+{
+  "container.wool.shearer": "Shearer",
+  "container.wool.wool_collector": "Wool Collector",
+
+  "block.wool.shearer": "Shearer",
+  "block.wool.wool_collector": "Wool Collector",
+
+  "itemGroup.wool.default_group": "Wool"
+}
