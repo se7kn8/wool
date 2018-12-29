@@ -2,7 +2,7 @@
   "id": "wool",
   "name": "Wool",
   "description": "Wool is a mod about wool",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "side": "universal",
   "initializer": "com.github.se7_kn8.wool.Wool",
   "requires": {
