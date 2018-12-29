@@ -1,0 +1,24 @@
+{
+  "type": "crafting_shaped",
+  "pattern": [
+    "WHW",
+    "ECE"
+  ],
+  "key": {
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "E": {
+      "item": "minecraft:ender_eye"
+    },
+    "C": {
+      "item": "minecraft:chest"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "wool:wool_collector"
+  }
+}
