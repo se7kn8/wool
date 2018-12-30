@@ -31,7 +31,7 @@ public class ItemCollectorContainer extends BlockEntityInventoryContainer {
 
 	@Override
 	public boolean canUse(PlayerEntity var1) {
-		return true;
+		return blockInventory.canPlayerUseInv(var1);
 	}
 
 	@Override

@@ -67,7 +67,7 @@ public abstract class BaseBlockEntity extends BlockEntity implements Inventory {
 
 	@Override
 	public boolean canPlayerUseInv(PlayerEntity var1) {
-		return true;
+		return this.world.getBlockEntity(this.pos) == this;
 	}
 
 	@Override
