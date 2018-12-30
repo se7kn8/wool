@@ -1,9 +1,8 @@
 package com.github.se7_kn8.wool.block;
 
 import com.github.se7_kn8.wool.block.entity.BaseBlockEntity;
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,8 +12,8 @@ import java.util.function.Supplier;
 
 public class ItemCollectorBlock<T extends BaseBlockEntity> extends BaseBlockWithEntity<T> {
 
-	public ItemCollectorBlock(Supplier<T> blockEntitySupplier) {
-		super(blockEntitySupplier, FabricBlockSettings.of(Material.STONE).build());
+	public ItemCollectorBlock(Supplier<T> blockEntitySupplier, Block.Settings settings) {
+		super(blockEntitySupplier, settings);
 	}
 
 	@Override
@@ -24,4 +23,5 @@ public class ItemCollectorBlock<T extends BaseBlockEntity> extends BaseBlockWith
 		world.addParticle(ParticleTypes.PORTAL, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, -2, 0.5, 0);
 		world.addParticle(ParticleTypes.PORTAL, pos.getX() + 0.5, pos.getY() + 0.8, pos.getZ() + 0.5, 2, 0.5, 0);
 	}
+
 }

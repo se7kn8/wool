@@ -6,7 +6,6 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.DefaultedList;
 import net.minecraft.util.Tickable;
 import net.minecraft.util.math.BoundingBox;
 

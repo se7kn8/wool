@@ -5,23 +5,16 @@ import com.github.se7_kn8.wool.block.ItemCollectorBlock;
 import com.github.se7_kn8.wool.block.entity.ItemCollectorBlockEntity;
 import com.github.se7_kn8.wool.block.entity.ShearerBlockEntity;
 import com.github.se7_kn8.wool.block.entity.WoolCollectorBlockEntity;
-import com.github.se7_kn8.wool.client.gui.BlockEntityInventoryGui;
-import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import com.github.se7_kn8.wool.container.ItemCollectorContainer;
 import com.github.se7_kn8.wool.container.ShearerContainer;
-
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.gui.GuiFactory;
-import net.fabricmc.fabric.api.client.gui.GuiProviderRegistry;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -42,8 +35,8 @@ public class Wool implements ModInitializer {
 	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
 	private static final Map<Identifier, BlockEntityType<? extends BlockEntity>> BLOCK_ENTITIES = new HashMap<>();
 
-	public static final Block SHEEP_SHAVER_BLOCK = addBlock("shearer", new BaseBlockWithEntity<>(ShearerBlockEntity::new, FabricBlockSettings.of(Material.STONE).build()), WOOL_ITEM_GROUP);
-	public static final Block WOOL_COLLECTOR_BLOCK = addBlock("wool_collector", new ItemCollectorBlock<>(WoolCollectorBlockEntity::new), WOOL_ITEM_GROUP);
+	public static final Block SHEEP_SHAVER_BLOCK = addBlock("shearer", new BaseBlockWithEntity<>(ShearerBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).build()), WOOL_ITEM_GROUP);
+	public static final Block WOOL_COLLECTOR_BLOCK = addBlock("wool_collector", new ItemCollectorBlock<>(WoolCollectorBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).build()), WOOL_ITEM_GROUP);
 
 	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new));
 	public static final BlockEntityType<WoolCollectorBlockEntity> WOOL_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wool_collector", BlockEntityType.Builder.create(WoolCollectorBlockEntity::new));
