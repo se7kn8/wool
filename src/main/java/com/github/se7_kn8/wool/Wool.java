@@ -78,10 +78,6 @@ public class Wool implements ModInitializer {
 			}
 			return null;
 		});
-
-		GuiProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), createBasicInventoryGui("textures/gui/container/shearer.png"));
-		GuiProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
-
 	}
 
 	private static <T extends BlockEntity> BlockEntityType<T> addBlockEntity(String name, BlockEntityType.Builder<T> blockEntityTypeBuilder) {
@@ -96,18 +92,5 @@ public class Wool implements ModInitializer {
 		blockItem.registerBlockItemMap(Item.BLOCK_ITEM_MAP, blockItem);
 		Wool.ITEMS.put(new Identifier(Wool.MODID, name), blockItem);
 		return block;
-	}
-
-	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(Identifier identifier) {
-		return container -> new BlockEntityInventoryGui(container) {
-			@Override
-			protected Identifier getBackground() {
-				return identifier;
-			}
-		};
-	}
-
-	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(String backgroundPath) {
-		return createBasicInventoryGui(new Identifier(Wool.MODID, backgroundPath));
 	}
 }

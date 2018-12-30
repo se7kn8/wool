@@ -4,7 +4,10 @@
   "description": "Wool is a mod about wool",
   "version": "1.1.0",
   "side": "universal",
-  "initializer": "com.github.se7_kn8.wool.Wool",
+  "initializers": [
+    "com.github.se7_kn8.wool.Wool",
+    "com.github.se7_kn8.wool.client.WoolClient"
+  ],
   "requires": {
     "fabric": "*"
   },
