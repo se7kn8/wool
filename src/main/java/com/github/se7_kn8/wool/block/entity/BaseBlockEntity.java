@@ -16,8 +16,8 @@ public abstract class BaseBlockEntity extends BlockEntity implements Inventory {
 
 	protected final DefaultedList<ItemStack> inventory = DefaultedList.create(getInvSize(), ItemStack.EMPTY);
 
-	public BaseBlockEntity(BlockEntityType<?> blockEntityType_1) {
-		super(blockEntityType_1);
+	public BaseBlockEntity(BlockEntityType<?> type) {
+		super(type);
 	}
 
 	@Override

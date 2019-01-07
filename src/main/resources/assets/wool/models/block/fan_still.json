@@ -1,0 +1,9 @@
+{
+  "parent": "wool:block/fan",
+  "textures": {
+    "top": "block/furnace_top",
+    "side": "block/furnace_side",
+    "south": "wool:block/fan_back",
+    "front": "wool:block/fan_front_still"
+  }
+}

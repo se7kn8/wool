@@ -1,0 +1,51 @@
+package com.github.se7_kn8.wool.block;
+
+import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.state.StateFactory;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
+import net.minecraft.util.math.Direction;
+
+import java.util.function.Supplier;
+
+public class FanBlock extends BaseBlockWithEntity {
+	public static final DirectionProperty DIRECTION;
+	public static final BooleanProperty ACTIVE;
+
+	static {
+		DIRECTION = Properties.FACING;
+		ACTIVE = BooleanProperty.create("active");
+	}
+
+	public FanBlock(Supplier blockEntitySupplier) {
+		super(blockEntitySupplier, FabricBlockSettings.of(Material.STONE).build());
+		this.setDefaultState(this.stateFactory.getDefaultState().with(DIRECTION, Direction.NORTH).with(ACTIVE, false));
+	}
+
+	@Override
+	public BlockState applyRotation(BlockState blockState, Rotation rotation) {
+		return blockState.with(DIRECTION, rotation.method_10503(blockState.get(DIRECTION)));
+	}
+
+	@Override
+	public BlockState applyMirror(BlockState blockState, Mirror mirror) {
+		return blockState.applyRotation(mirror.getRotation(blockState.get(DIRECTION)));
+	}
+
+	@Override
+	protected void appendProperties(StateFactory.Builder<Block, BlockState> builder) {
+		builder.with(DIRECTION, ACTIVE);
+	}
+
+	@Override
+	public BlockState getPlacementState(ItemPlacementContext context) {
+		return this.getDefaultState().with(DIRECTION, context.getPlayerFacing().getOpposite());
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=up,active=false": { "model":  "wool:block/fan_still_vertical"},
+    "facing=down,active=false": { "model":  "wool:block/fan_still_vertical", "x": 180},
+    "facing=north,active=false": { "model":  "wool:block/fan_still" },
+    "facing=south,active=false": { "model":  "wool:block/fan_still", "y": 180 },
+    "facing=west,active=false": { "model":  "wool:block/fan_still", "y": 270 },
+    "facing=east,active=false": { "model":  "wool:block/fan_still", "y": 90 },
+    "facing=up,active=true": { "model":  "wool:block/fan_vertical"},
+    "facing=down,active=true": { "model":  "wool:block/fan_vertical","x": 180},
+    "facing=north,active=true": { "model":  "wool:block/fan" },
+    "facing=south,active=true": { "model":  "wool:block/fan", "y": 180 },
+    "facing=west,active=true": { "model":  "wool:block/fan", "y": 270 },
+    "facing=east,active=true": { "model":  "wool:block/fan", "y": 90 }
+  }
+}

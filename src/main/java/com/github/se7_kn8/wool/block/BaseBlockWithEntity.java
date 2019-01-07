@@ -44,7 +44,10 @@ public class BaseBlockWithEntity<T extends BaseBlockEntity> extends BlockWithEnt
 		} else {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
 			if (blockEntity instanceof BaseBlockEntity) {
-				ContainerProviderRegistry.INSTANCE.openContainer(new Identifier(Wool.MODID, ((BaseBlockEntity) blockEntity).getContainerId()), player, packetByteBuf -> packetByteBuf.writeBlockPos(pos));
+				String containerId = ((BaseBlockEntity) blockEntity).getContainerId();
+				if (containerId != null) {
+					ContainerProviderRegistry.INSTANCE.openContainer(new Identifier(Wool.MODID, ((BaseBlockEntity) blockEntity).getContainerId()), player, packetByteBuf -> packetByteBuf.writeBlockPos(pos));
+				}
 			}
 			return true;
 		}
