@@ -1,20 +1,24 @@
 package com.github.se7_kn8.wool.container;
 
+import com.github.se7_kn8.wool.Wool;
 import com.github.se7_kn8.wool.util.ContainerUtil;
+import net.minecraft.class_3917;
 import net.minecraft.container.Slot;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.text.TextComponent;
+import net.minecraft.text.TranslatableTextComponent;
 
 public class ShearerContainer extends BlockEntityInventoryContainer {
 
 	private final Inventory blockInventory;
-	private final Inventory playerInventory;
 
-	public ShearerContainer(Inventory shearer, Inventory player) {
+	public ShearerContainer(int syncId, Inventory shearer, PlayerInventory player) {
+		super(syncId, player);
 		this.blockInventory = shearer;
-		this.playerInventory = player;
 
 		for (int x = 0; x < 3; ++x) {
 			this.addSlot(new Slot(shearer, x, 62 + x * 18, 35) {
@@ -25,21 +29,12 @@ public class ShearerContainer extends BlockEntityInventoryContainer {
 			});
 		}
 
-		ContainerUtil.addPlayerSlots(playerInventory, this::addSlot);
+		ContainerUtil.addPlayerSlots(player, this::addSlot);
 	}
 
 	@Override
 	public boolean canUse(PlayerEntity player) {
 		return this.blockInventory.canPlayerUseInv(player);
-	}
-
-
-	public Inventory getBlockInventory() {
-		return blockInventory;
-	}
-
-	public Inventory getPlayerInventory() {
-		return playerInventory;
 	}
 
 	@Override
@@ -71,5 +66,15 @@ public class ShearerContainer extends BlockEntityInventoryContainer {
 		}
 
 		return stack;
+	}
+
+	@Override
+	public class_3917<?> method_17358() {
+		return null;
+	}
+
+	@Override
+	public TextComponent getTextComponent() {
+		return new TranslatableTextComponent("container." + Wool.MODID + ".shearer");
 	}
 }

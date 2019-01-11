@@ -1,14 +1,11 @@
 package com.github.se7_kn8.wool.block.entity;
 
-import com.github.se7_kn8.wool.Wool;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.DefaultedList;
 import net.minecraft.util.InventoryUtil;
 
@@ -78,7 +75,7 @@ public abstract class BaseBlockEntity extends BlockEntity implements Inventory {
 	public abstract String getContainerId();
 
 	@Override
-	public TextComponent getName() {
-		return new TranslatableTextComponent("container." + Wool.MODID + "." + getContainerId());
+	public boolean method_11011() {
+		return super.method_11011();
 	}
 }

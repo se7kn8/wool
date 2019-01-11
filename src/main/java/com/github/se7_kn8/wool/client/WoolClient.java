@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.gui.GuiFactory;
 import net.fabricmc.fabric.api.client.gui.GuiProviderRegistry;
 import net.minecraft.util.Identifier;
 
+@SuppressWarnings("unused") // Loaded by fabric-loader
 public class WoolClient implements ClientModInitializer {
 
 	@Override
@@ -18,7 +19,7 @@ public class WoolClient implements ClientModInitializer {
 	}
 
 	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(Identifier identifier) {
-		return container -> new BlockEntityInventoryGui(container) {
+		return container -> new BlockEntityInventoryGui<T>(container) {
 			@Override
 			protected Identifier getBackground() {
 				return identifier;

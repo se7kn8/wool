@@ -1,14 +1,14 @@
 package com.github.se7_kn8.wool.client.gui;
 
+import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.gui.ContainerGui;
-import net.minecraft.container.Container;
 import net.minecraft.util.Identifier;
 
-public abstract class BaseContainerGui extends ContainerGui {
+public abstract class BaseContainerGui<T extends BlockEntityInventoryContainer> extends ContainerGui<T> {
 
-	public BaseContainerGui(Container container_1) {
-		super(container_1);
+	public BaseContainerGui(T container) {
+		super(container, container.getPlayerInventory(), container.getTextComponent());
 	}
 
 	@Override

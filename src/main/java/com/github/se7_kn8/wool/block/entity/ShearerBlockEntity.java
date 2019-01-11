@@ -40,7 +40,7 @@ public class ShearerBlockEntity extends BaseBlockEntity implements Tickable, Inv
 						if (!stack.isEmpty() && stack.getItem() instanceof ShearsItem) {
 							if (stack.getItem().getDurability() - stack.getDamage() >= currentDamage) {
 								stack.setDamage(stack.getDamage() + currentDamage);
-								sheep.method_6636();
+								sheep.dropItems();
 								break;
 							} else {
 								int damageLeft = stack.getItem().getDurability() - stack.getDamage();

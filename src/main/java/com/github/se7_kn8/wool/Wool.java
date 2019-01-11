@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+@SuppressWarnings("unsued") // Loaded by fabric-loader
 public class Wool implements ModInitializer {
 	public static final String MODID = "wool";
 
@@ -64,18 +65,18 @@ public class Wool implements ModInitializer {
 			Registry.register(Registry.BLOCK_ENTITY, identifier, BLOCK_ENTITIES.get(identifier));
 		}
 
-		ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), (identifier, player, buf) -> {
+		ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), (syncId, identifier, player, buf) -> {
 			BlockEntity blockEntity = player.world.getBlockEntity(buf.readBlockPos());
 			if (blockEntity instanceof ShearerBlockEntity) {
-				return new ShearerContainer((ShearerBlockEntity) blockEntity, player.inventory);
+				return new ShearerContainer(syncId, (ShearerBlockEntity) blockEntity, player.inventory);
 			}
 			return null;
 		});
 
-		ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), (identifier, player, buf) -> {
+		ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), (syncId, identifier, player, buf) -> {
 			BlockEntity blockEntity = player.world.getBlockEntity(buf.readBlockPos());
 			if (blockEntity instanceof ItemCollectorBlockEntity) {
-				return new ItemCollectorContainer((ItemCollectorBlockEntity) blockEntity, player.inventory);
+				return new ItemCollectorContainer(syncId, (ItemCollectorBlockEntity) blockEntity, player.inventory);
 			}
 			return null;
 		});

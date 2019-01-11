@@ -11,7 +11,7 @@ import java.util.Random;
 public class SheepEntityMixin {
 
 	@Overwrite
-	public static DyeColor method_6632(Random random_1) {
+	public static DyeColor generateDefaultColor(Random random_1) {
 		return DyeColor.byId(random_1.nextInt(16));
 	}
 

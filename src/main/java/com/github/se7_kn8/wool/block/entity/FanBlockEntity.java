@@ -150,7 +150,7 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 							minYOffset = 0;
 							minZOffset = 0;
 							maxXOffset = 1;
-							maxYOffset = RANGE ;
+							maxYOffset = RANGE;
 							maxZOffset = 1;
 							break;
 						case DOWN:
@@ -162,7 +162,7 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 							maxZOffset = 1;
 							break;
 					}
-					BoundingBox box = new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset);
+
 					List<LivingEntity> entities = world.getEntities(LivingEntity.class, new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset), entity -> true);
 					for (LivingEntity entity : entities) {
 						Vec3d velocityVec = new Vec3d(Math.abs(maxXOffset) == RANGE ? maxXOffset : 0, Math.abs(maxYOffset) == RANGE ? maxYOffset : 0, Math.abs(maxZOffset) == RANGE ? maxZOffset : 0);

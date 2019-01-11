@@ -1,19 +1,23 @@
 package com.github.se7_kn8.wool.container;
 
+import com.github.se7_kn8.wool.Wool;
 import com.github.se7_kn8.wool.util.ContainerUtil;
+import net.minecraft.class_3917;
 import net.minecraft.container.Slot;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.text.TextComponent;
+import net.minecraft.text.TranslatableTextComponent;
 
 public class ItemCollectorContainer extends BlockEntityInventoryContainer {
 
 	private final Inventory blockInventory;
-	private final Inventory playerInventory;
 
-	public ItemCollectorContainer(Inventory collector, Inventory player) {
+	public ItemCollectorContainer(int syncId, Inventory collector, PlayerInventory player) {
+		super(syncId, player);
 		this.blockInventory = collector;
-		this.playerInventory = player;
 
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 3; x++) {
@@ -26,22 +30,12 @@ public class ItemCollectorContainer extends BlockEntityInventoryContainer {
 			}
 		}
 
-		ContainerUtil.addPlayerSlots(playerInventory, this::addSlot);
+		ContainerUtil.addPlayerSlots(player, this::addSlot);
 	}
 
 	@Override
 	public boolean canUse(PlayerEntity var1) {
 		return blockInventory.canPlayerUseInv(var1);
-	}
-
-	@Override
-	public Inventory getPlayerInventory() {
-		return playerInventory;
-	}
-
-	@Override
-	public Inventory getBlockInventory() {
-		return blockInventory;
 	}
 
 	public ItemStack transferSlot(PlayerEntity player, int index) {
@@ -74,4 +68,13 @@ public class ItemCollectorContainer extends BlockEntityInventoryContainer {
 		return stack;
 	}
 
+	@Override
+	public class_3917<?> method_17358() {
+		return null;
+	}
+
+	@Override
+	public TextComponent getTextComponent() {
+		return new TranslatableTextComponent("container." + Wool.MODID + ".wool_collector");
+	}
 }
