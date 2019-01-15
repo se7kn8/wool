@@ -1,7 +1,6 @@
 package com.github.se7_kn8.wool;
 
 import com.github.se7_kn8.wool.block.BaseBlockWithEntity;
-import com.github.se7_kn8.wool.block.FanBlock;
 import com.github.se7_kn8.wool.block.ItemCollectorBlock;
 import com.github.se7_kn8.wool.block.entity.FanBlockEntity;
 import com.github.se7_kn8.wool.block.entity.ItemCollectorBlockEntity;
@@ -13,7 +12,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.block.FabricBlockSettings;
-import net.fabricmc.fabric.networking.CustomPayloadPacketRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -41,13 +39,13 @@ public class Wool implements ModInitializer {
 
 	public static final Block SHEEP_SHAVER_BLOCK = addBlock("shearer", new BaseBlockWithEntity<>(ShearerBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).build()), WOOL_ITEM_GROUP);
 	public static final Block WOOL_COLLECTOR_BLOCK = addBlock("wool_collector", new ItemCollectorBlock<>(WoolCollectorBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).build()), WOOL_ITEM_GROUP);
-	public static final Block FAN_BLOCK = addBlock("fan", new FanBlock(FanBlockEntity::new), WOOL_ITEM_GROUP);
+	public static final Block FAN_BLOCK/*TODO = addBlock("fan", new FanBlock(FanBlockEntity::new), WOOL_ITEM_GROUP)*/ = null;
 
 	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new));
 	public static final BlockEntityType<WoolCollectorBlockEntity> WOOL_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wool_collector", BlockEntityType.Builder.create(WoolCollectorBlockEntity::new));
-	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new));
+	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY/*TODO = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new))*/ = null;
 
-	public static final Identifier ADD_VELOCITY_TO_PLAYER = new Identifier(Wool.MODID, "add_player_velocity");
+	public static final Identifier ADD_VELOCITY_TO_PLAYER/*TODO = new Identifier(Wool.MODID, "add_player_velocity")*/ = null;
 
 	@Override
 	public void onInitialize() {
@@ -81,7 +79,7 @@ public class Wool implements ModInitializer {
 			return null;
 		});
 
-		CustomPayloadPacketRegistry.CLIENT.register(ADD_VELOCITY_TO_PLAYER, (packetContext, packetByteBuf) -> {
+		/*CustomPayloadPacketRegistry.CLIENT.register(ADD_VELOCITY_TO_PLAYER, (packetContext, packetByteBuf) -> {
 			double velX = packetByteBuf.readDouble();
 			double velY = packetByteBuf.readDouble();
 			double velZ = packetByteBuf.readDouble();
@@ -90,7 +88,7 @@ public class Wool implements ModInitializer {
 				packetContext.getPlayer().addVelocity(velX, velY, velZ);
 				packetContext.getPlayer().fallDistance = 0;
 			}
-		});
+		});*/
 
 	}
 
