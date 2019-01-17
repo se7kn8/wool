@@ -93,7 +93,7 @@ public class Wool implements ModInitializer {
 	}
 
 	private static <T extends BlockEntity> BlockEntityType<T> addBlockEntity(String name, BlockEntityType.Builder<T> blockEntityTypeBuilder) {
-		BlockEntityType<T> blockEntityType = blockEntityTypeBuilder.method_11034(null);
+		BlockEntityType<T> blockEntityType = blockEntityTypeBuilder.build(null);
 		Wool.BLOCK_ENTITIES.put(new Identifier(Wool.MODID, name), blockEntityType);
 		return blockEntityType;
 	}

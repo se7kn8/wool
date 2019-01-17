@@ -2,7 +2,6 @@ package com.github.se7_kn8.wool.container;
 
 import com.github.se7_kn8.wool.Wool;
 import com.github.se7_kn8.wool.util.ContainerUtil;
-import net.minecraft.class_3917;
 import net.minecraft.container.Slot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -66,11 +65,6 @@ public class ShearerContainer extends BlockEntityInventoryContainer {
 		}
 
 		return stack;
-	}
-
-	@Override
-	public class_3917<?> method_17358() {
-		return null;
 	}
 
 	@Override

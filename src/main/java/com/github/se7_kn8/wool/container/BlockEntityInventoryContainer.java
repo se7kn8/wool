@@ -8,8 +8,8 @@ public abstract class BlockEntityInventoryContainer extends Container {
 
 	private final PlayerInventory playerInventory;
 
-	public BlockEntityInventoryContainer(int int_1, PlayerInventory inventory) {
-		super(int_1);
+	public BlockEntityInventoryContainer(int syncId, PlayerInventory inventory) {
+		super(null, syncId);
 		this.playerInventory = inventory;
 	}
 
