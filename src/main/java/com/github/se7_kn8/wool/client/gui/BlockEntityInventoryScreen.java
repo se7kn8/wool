@@ -2,9 +2,9 @@ package com.github.se7_kn8.wool.client.gui;
 
 import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 
-public abstract class BlockEntityInventoryGui<T extends BlockEntityInventoryContainer> extends BaseContainerGui<T> {
+public abstract class BlockEntityInventoryScreen<T extends BlockEntityInventoryContainer> extends BaseContainerScreen<T> {
 
-	public BlockEntityInventoryGui(T container) {
+	public BlockEntityInventoryScreen(T container) {
 		super(container);
 	}
 

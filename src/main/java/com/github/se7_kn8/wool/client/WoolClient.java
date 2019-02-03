@@ -1,7 +1,7 @@
 package com.github.se7_kn8.wool.client;
 
 import com.github.se7_kn8.wool.Wool;
-import com.github.se7_kn8.wool.client.gui.BlockEntityInventoryGui;
+import com.github.se7_kn8.wool.client.gui.BlockEntityInventoryScreen;
 import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.gui.GuiFactory;
@@ -19,7 +19,7 @@ public class WoolClient implements ClientModInitializer {
 	}
 
 	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(Identifier identifier) {
-		return container -> new BlockEntityInventoryGui<T>(container) {
+		return container -> new BlockEntityInventoryScreen<T>(container) {
 			@Override
 			protected Identifier getBackground() {
 				return identifier;

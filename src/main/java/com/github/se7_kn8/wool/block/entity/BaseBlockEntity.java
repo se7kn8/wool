@@ -73,9 +73,4 @@ public abstract class BaseBlockEntity extends BlockEntity implements Inventory {
 	}
 
 	public abstract String getContainerId();
-
-	@Override
-	public boolean method_11011() {
-		return super.method_11011();
-	}
 }

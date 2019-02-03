@@ -2,12 +2,12 @@ package com.github.se7_kn8.wool.client.gui;
 
 import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import com.mojang.blaze3d.platform.GlStateManager;
-import net.minecraft.client.gui.ContainerGui;
+import net.minecraft.client.gui.ContainerScreen;
 import net.minecraft.util.Identifier;
 
-public abstract class BaseContainerGui<T extends BlockEntityInventoryContainer> extends ContainerGui<T> {
+public abstract class BaseContainerScreen<T extends BlockEntityInventoryContainer> extends ContainerScreen<T> {
 
-	public BaseContainerGui(T container) {
+	public BaseContainerScreen(T container) {
 		super(container, container.getPlayerInventory(), container.getTextComponent());
 	}
 

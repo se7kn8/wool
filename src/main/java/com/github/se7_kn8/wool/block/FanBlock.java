@@ -30,13 +30,13 @@ public class FanBlock extends BaseBlockWithEntity {
 	}
 
 	@Override
-	public BlockState applyRotation(BlockState blockState, Rotation rotation) {
-		return blockState.with(DIRECTION, rotation.method_10503(blockState.get(DIRECTION)));
+	public BlockState rotate(BlockState blockState, Rotation rotation) {
+		return blockState.with(DIRECTION, rotation.rotate(blockState.get(DIRECTION)));
 	}
 
 	@Override
-	public BlockState applyMirror(BlockState blockState, Mirror mirror) {
-		return blockState.applyRotation(mirror.getRotation(blockState.get(DIRECTION)));
+	public BlockState mirror(BlockState blockState, Mirror mirror) {
+		return blockState.rotate(mirror.getRotation(blockState.get(DIRECTION)));
 	}
 
 	@Override
