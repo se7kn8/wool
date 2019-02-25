@@ -4,8 +4,8 @@ import com.github.se7_kn8.wool.Wool;
 import com.github.se7_kn8.wool.client.gui.BlockEntityInventoryScreen;
 import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.gui.GuiFactory;
-import net.fabricmc.fabric.api.client.gui.GuiProviderRegistry;
+import net.fabricmc.fabric.api.client.screen.ContainerScreenFactory;
+import net.fabricmc.fabric.api.client.screen.ScreenProviderRegistry;
 import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused") // Loaded by fabric-loader
@@ -13,12 +13,12 @@ public class WoolClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		GuiProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), createBasicInventoryGui("textures/gui/container/shearer.png"));
-		GuiProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
+		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), createBasicInventoryGui("textures/gui/container/shearer.png"));
+		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 
 	}
 
-	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(Identifier identifier) {
+	private <T extends BlockEntityInventoryContainer> ContainerScreenFactory<T> createBasicInventoryGui(Identifier identifier) {
 		return container -> new BlockEntityInventoryScreen<T>(container) {
 			@Override
 			protected Identifier getBackground() {
@@ -27,7 +27,7 @@ public class WoolClient implements ClientModInitializer {
 		};
 	}
 
-	private <T extends BlockEntityInventoryContainer> GuiFactory<T> createBasicInventoryGui(String backgroundPath) {
+	private <T extends BlockEntityInventoryContainer> ContainerScreenFactory<T> createBasicInventoryGui(String backgroundPath) {
 		return createBasicInventoryGui(new Identifier(Wool.MODID, backgroundPath));
 	}
 

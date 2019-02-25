@@ -22,7 +22,7 @@ public abstract class BaseContainerScreen<T extends BlockEntityInventoryContaine
 	public void draw(int int_1, int int_2, float float_1) {
 		this.drawBackground();
 		super.draw(int_1, int_2, float_1);
-		this.drawMousoverTooltip(int_1, int_2);
+		this.drawMouseoverTooltip(int_1, int_2);
 	}
 
 	protected abstract Identifier getBackground();

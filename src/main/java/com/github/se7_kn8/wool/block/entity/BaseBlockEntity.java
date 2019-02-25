@@ -68,7 +68,7 @@ public abstract class BaseBlockEntity extends BlockEntity implements Inventory {
 	}
 
 	@Override
-	public void clearInv() {
+	public void clear() {
 		inventory.clear();
 	}
 

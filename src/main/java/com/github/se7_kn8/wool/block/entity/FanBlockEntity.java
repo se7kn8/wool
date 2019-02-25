@@ -4,7 +4,7 @@ import com.github.se7_kn8.wool.Wool;
 import com.github.se7_kn8.wool.block.FanBlock;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.network.packet.CustomPayloadClientPacket;
+import net.minecraft.client.network.packet.CustomPayloadS2CPacket;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -163,7 +163,7 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 							break;
 					}
 
-					List<LivingEntity> entities = world.getEntities(LivingEntity.class, new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset), entity -> true);
+					List<LivingEntity> entities = world.method_8390(LivingEntity.class, new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset), entity -> true);
 					for (LivingEntity entity : entities) {
 						Vec3d velocityVec = new Vec3d(Math.abs(maxXOffset) == RANGE ? maxXOffset : 0, Math.abs(maxYOffset) == RANGE ? maxYOffset : 0, Math.abs(maxZOffset) == RANGE ? maxZOffset : 0);
 						Vec3d blockVector = new Vec3d(pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d);
@@ -174,7 +174,7 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 							buf.writeDouble(velocityVec.x);
 							buf.writeDouble(velocityVec.y);
 							buf.writeDouble(velocityVec.z);
-							((ServerPlayerEntity) entity).networkHandler.sendPacket(new CustomPayloadClientPacket(Wool.ADD_VELOCITY_TO_PLAYER, buf));
+							((ServerPlayerEntity) entity).networkHandler.sendPacket(new CustomPayloadS2CPacket(Wool.ADD_VELOCITY_TO_PLAYER, buf));
 						} else {
 							entity.addVelocity(velocityVec.x, velocityVec.y, velocityVec.z);
 						}

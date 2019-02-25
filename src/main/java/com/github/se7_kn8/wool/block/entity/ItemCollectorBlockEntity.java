@@ -30,7 +30,7 @@ public abstract class ItemCollectorBlockEntity extends BaseBlockEntity implement
 			BoundingBox outerBox = new BoundingBox(pos.getX() - 4, pos.getY() - 1, pos.getZ() - 4, pos.getX() + 5, pos.getY() + 4, pos.getZ() + 5);
 			BoundingBox innerBox = new BoundingBox(pos.getX(), pos.getY() + 1, pos.getZ(), pos.getX() + 1, pos.getY() + 2, pos.getZ() + 1);
 
-			List<ItemEntity> items = world.getEntities(ItemEntity.class, outerBox, this::checkItemEntity);
+			List<ItemEntity> items = world.method_8390(ItemEntity.class, outerBox, this::checkItemEntity);
 			for (ItemEntity item : items) {
 				if (!item.getBoundingBox().intersects(innerBox)) {
 					Vec3d velocity = new Vec3d(item.x - (pos.getX() + 0.5), item.y - (pos.getY() + 1), item.z - (pos.getZ() + 0.5)).normalize().multiply(-0.1);
@@ -39,7 +39,7 @@ public abstract class ItemCollectorBlockEntity extends BaseBlockEntity implement
 			}
 			if (workCounter >= MAX_WORK) {
 
-				List<ItemEntity> nearItems = world.getEntities(ItemEntity.class, innerBox, this::checkItemEntity);
+				List<ItemEntity> nearItems = world.method_8390(ItemEntity.class, innerBox, this::checkItemEntity);
 				if (nearItems.size() > 0) {
 					ItemEntity entity = nearItems.get(0);
 					for (int i = 0; i < inventory.size(); i++) {
