@@ -27,7 +27,7 @@ public class ShearerBlockEntity extends BaseBlockEntity implements Tickable, Inv
 	public void tick() {
 		if (!this.world.isClient) {
 			if (cooldownTicks <= 0) {
-				List<SheepEntity> sheeps = world.method_8390(SheepEntity.class, new BoundingBox(this.pos.getX() - 1, this.pos.getY() - 1, this.pos.getZ() - 1, this.pos.getX() + 2, this.pos.getY() + 4, this.pos.getZ() + 2), sheep -> !(sheep.isSheared() || sheep.isChild()));
+				List<SheepEntity> sheeps = world.getEntities(SheepEntity.class, new BoundingBox(this.pos.getX() - 1, this.pos.getY() - 1, this.pos.getZ() - 1, this.pos.getX() + 2, this.pos.getY() + 4, this.pos.getZ() + 2), sheep -> !(sheep.isSheared() || sheep.isChild()));
 
 				int totalDamage = 0;
 

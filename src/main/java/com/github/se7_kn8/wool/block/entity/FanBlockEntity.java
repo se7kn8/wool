@@ -163,7 +163,7 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 							break;
 					}
 
-					List<LivingEntity> entities = world.method_8390(LivingEntity.class, new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset), entity -> true);
+					List<LivingEntity> entities = world.getEntities(LivingEntity.class, new BoundingBox(pos.getX() + minXOffset, pos.getY() + minYOffset, pos.getZ() + minZOffset, pos.getX() + maxXOffset, pos.getY() + maxYOffset, pos.getZ() + maxZOffset), entity -> true);
 					for (LivingEntity entity : entities) {
 						Vec3d velocityVec = new Vec3d(Math.abs(maxXOffset) == RANGE ? maxXOffset : 0, Math.abs(maxYOffset) == RANGE ? maxYOffset : 0, Math.abs(maxZOffset) == RANGE ? maxZOffset : 0);
 						Vec3d blockVector = new Vec3d(pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d);

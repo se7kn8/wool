@@ -1,17 +1,27 @@
 {
+  "schemaVersion": 1,
   "id": "wool",
+  "version": "${version}",
   "name": "Wool",
   "description": "Wool is a mod about wool",
-  "version": "1.1.5",
-  "side": "universal",
-  "initializers": [
-    "com.github.se7_kn8.wool.Wool",
-    "com.github.se7_kn8.wool.client.WoolClient"
-  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.se7_kn8.wool.Wool"
+    ],
+    "client": [
+      "com.github.se7_kn8.wool.client.WoolClient"
+    ]
+  },
   "requires": {
+    "fabricloader": ">=0.4.0",
     "fabric": "*"
   },
-  "mixins": {
-    "common": "wool.common.json"
-  }
+  "mixins": [
+    "wool.common.json"
+  ],
+  "authors": [
+    "SE7-KN8"
+  ]
 }

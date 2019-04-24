@@ -14,14 +14,14 @@ public abstract class BaseContainerScreen<T extends BlockEntityInventoryContaine
 	@Override
 	protected void drawBackground(float var1, int var2, int var3) {
 		GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
-		this.client.getTextureManager().bindTexture(getBackground());
-		this.drawTexturedRect((this.width - this.containerWidth) / 2, (this.height - this.containerHeight) / 2, 0, 0, this.containerWidth, this.containerHeight);
+		this.minecraft.getTextureManager().bindTexture(getBackground());
+		this.blit((this.width - this.containerWidth) / 2, (this.height - this.containerHeight) / 2, 0, 0, this.containerWidth, this.containerHeight);
 	}
 
 	@Override
-	public void draw(int int_1, int int_2, float float_1) {
-		this.drawBackground();
-		super.draw(int_1, int_2, float_1);
+	public void render(int int_1, int int_2, float float_1) {
+		this.renderBackground();
+		super.render(int_1, int_2, float_1);
 		this.drawMouseoverTooltip(int_1, int_2);
 	}
 
