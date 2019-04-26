@@ -2,7 +2,6 @@ package com.github.se7_kn8.wool.block.entity;
 
 import com.github.se7_kn8.wool.Wool;
 import net.minecraft.entity.passive.SheepEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShearsItem;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +10,7 @@ import net.minecraft.util.math.BoundingBox;
 
 import java.util.List;
 
-public class ShearerBlockEntity extends BaseBlockEntity implements Tickable, Inventory {
+public class ShearerBlockEntity extends BaseBlockEntity implements Tickable {
 
 	private static final int MAX_DAMAGE_PER_TICK = 30;
 	private static final int DAMAGE_PER_SHEEP = 5;

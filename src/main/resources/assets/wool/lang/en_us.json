@@ -1,9 +1,13 @@
 {
   "container.wool.shearer": "Shearer",
+  "container.wool.tree_cutter": "Tree Cutter",
   "container.wool.wool_collector": "Wool Collector",
+  "container.wool.wood_collector": "Wood Collector",
 
   "block.wool.shearer": "Shearer",
+  "block.wool.tree_cutter": "Tree Cutter",
   "block.wool.wool_collector": "Wool Collector",
+  "block.wool.wood_collector": "Wood Collector",
 
   "itemGroup.wool.default_group": "Wool"
 }

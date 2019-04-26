@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.TextComponent;
 import net.minecraft.text.TranslatableTextComponent;
 
-public class ItemCollectorContainer extends BlockEntityInventoryContainer {
+public abstract class ItemCollectorContainer extends BlockEntityInventoryContainer {
 
 	private final Inventory blockInventory;
 
@@ -67,8 +67,10 @@ public class ItemCollectorContainer extends BlockEntityInventoryContainer {
 		return stack;
 	}
 
+	protected abstract String getName();
+
 	@Override
 	public TextComponent getTextComponent() {
-		return new TranslatableTextComponent("container." + Wool.MODID + ".wool_collector");
+		return new TranslatableTextComponent("container." + Wool.MODID + "." + getName());
 	}
 }

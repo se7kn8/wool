@@ -7,15 +7,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.text.TextComponent;
 import net.minecraft.text.TranslatableTextComponent;
 
-public class ShearerContainer extends BlockEntityInventoryContainer {
+public abstract class MachineContainer extends BlockEntityInventoryContainer {
 
 	private final Inventory blockInventory;
 
-	public ShearerContainer(int syncId, Inventory shearer, PlayerInventory player) {
+	public MachineContainer(int syncId, Inventory shearer, PlayerInventory player) {
 		super(syncId, player);
 		this.blockInventory = shearer;
 
@@ -23,13 +22,15 @@ public class ShearerContainer extends BlockEntityInventoryContainer {
 			this.addSlot(new Slot(shearer, x, 62 + x * 18, 35) {
 				@Override
 				public boolean canInsert(ItemStack itemStack_1) {
-					return itemStack_1.getItem() == Items.SHEARS;
+					return isItemUsable(itemStack_1);
 				}
 			});
 		}
 
 		ContainerUtil.addPlayerSlots(player, this::addSlot);
 	}
+
+	protected abstract boolean isItemUsable(ItemStack stack);
 
 	@Override
 	public boolean canUse(PlayerEntity player) {
@@ -67,8 +68,10 @@ public class ShearerContainer extends BlockEntityInventoryContainer {
 		return stack;
 	}
 
+	protected abstract String getName();
+
 	@Override
 	public TextComponent getTextComponent() {
-		return new TranslatableTextComponent("container." + Wool.MODID + ".shearer");
+		return new TranslatableTextComponent("container." + Wool.MODID + "." + getName());
 	}
 }

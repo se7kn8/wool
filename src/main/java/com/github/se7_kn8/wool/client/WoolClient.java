@@ -13,8 +13,10 @@ public class WoolClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
-		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), createBasicInventoryGui("textures/gui/container/shearer.png"));
+		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), createBasicInventoryGui("textures/gui/container/basic_machine.png"));
+		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "tree_cutter"), createBasicInventoryGui("textures/gui/container/basic_machine.png"));
 		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
+		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wood_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 
 	}
 
