@@ -7,7 +7,7 @@
   ],
   "key": {
     "I": {
-      "item": "minecraft:shears"
+      "item": "minecraft:iron_axe"
     },
     "S": {
       "item": "minecraft:stone"
@@ -20,6 +20,6 @@
     }
   },
   "result": {
-    "item": "wool:shearer"
+    "item": "wool:tree_cutter"
   }
 }

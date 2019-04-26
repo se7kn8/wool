@@ -8,6 +8,7 @@
   "block.wool.tree_cutter": "Tree Cutter",
   "block.wool.wool_collector": "Wool Collector",
   "block.wool.wood_collector": "Wood Collector",
+  "block.wool.fan": "Fan",
 
   "itemGroup.wool.default_group": "Wool"
 }
