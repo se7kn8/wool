@@ -1,0 +1,14 @@
+{
+  "container.wool.shearer": "剪毛机",
+  "container.wool.tree_cutter": "伐木机",
+  "container.wool.wool_collector": "羊毛收集器",
+  "container.wool.wood_collector": "树木收集器",
+
+  "block.wool.shearer": "剪毛机",
+  "block.wool.tree_cutter": "伐木机",
+  "block.wool.wool_collector": "羊毛收集器",
+  "block.wool.wood_collector": "树木收集器",
+  "block.wool.fan": "风扇",
+
+  "itemGroup.wool.default_group": "羊毛"
+}
