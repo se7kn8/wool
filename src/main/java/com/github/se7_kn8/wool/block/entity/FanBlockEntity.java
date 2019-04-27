@@ -19,7 +19,7 @@ import java.util.List;
 
 public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 
-	public static final int RANGE = 10;
+	public static final int RANGE = 20;
 	public static final double PARTICLE_SPEED = 0.3d;
 
 	public FanBlockEntity() {
@@ -168,13 +168,14 @@ public class FanBlockEntity extends BaseBlockEntity implements Tickable {
 						Vec3d velocityVec = new Vec3d(Math.abs(maxXOffset) == RANGE ? maxXOffset : 0, Math.abs(maxYOffset) == RANGE ? maxYOffset : 0, Math.abs(maxZOffset) == RANGE ? maxZOffset : 0);
 						Vec3d blockVector = new Vec3d(pos.getX() + 0.5d, pos.getY() + 0.5d, pos.getZ() + 0.5d);
 						Vec3d entityVector = new Vec3d(entity.x, entity.y, entity.z);
-						velocityVec = velocityVec.normalize().multiply((-0.005 * Math.pow(blockVector.distanceTo(entityVector), 2) + 0.5) * 0.2);
+						//velocityVec = velocityVec.normalize().multiply((-0.005 * Math.pow(blockVector.distanceTo(entityVector), 2) + 0.5) * 0.2);
+						velocityVec = velocityVec.normalize().multiply(0.1 * Math.pow(0.8, blockVector.distanceTo(entityVector)));
 						if (entity instanceof ServerPlayerEntity) {
 							PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
 							buf.writeDouble(velocityVec.x);
 							buf.writeDouble(velocityVec.y);
 							buf.writeDouble(velocityVec.z);
-							((ServerPlayerEntity) entity).networkHandler.sendPacket(new CustomPayloadS2CPacket(Wool.ADD_VELOCITY_TO_PLAYER, buf));
+							((ServerPlayerEntity) entity).networkHandler.sendPacket(new CustomPayloadS2CPacket(Wool.ADD_VELOCITY_TO_PLAYER_PACKET, buf));
 						} else {
 							entity.addVelocity(velocityVec.x, velocityVec.y, velocityVec.z);
 						}

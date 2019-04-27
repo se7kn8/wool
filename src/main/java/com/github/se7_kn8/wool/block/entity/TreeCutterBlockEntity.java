@@ -17,7 +17,7 @@ public class TreeCutterBlockEntity extends BaseBlockEntity implements Tickable {
 	private int cooldownTicks = COOLDOWN_TICKS;
 
 	public TreeCutterBlockEntity() {
-		super(Wool.TREE_CUTTER_BLOCK_ENTITIY_BLOCK);
+		super(Wool.TREE_CUTTER_BLOCK_ENTITY);
 	}
 
 	@Override

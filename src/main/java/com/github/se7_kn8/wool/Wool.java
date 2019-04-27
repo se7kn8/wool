@@ -38,13 +38,13 @@ public class Wool implements ModInitializer {
 	public static final Block WOOD_COLLECTOR_BLOCK = addBlock("wood_collector", new ItemCollectorBlock<>(WoodCollectorBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).lightLevel(0).build()), WOOL_ITEM_GROUP);
 	public static final Block FAN_BLOCK = addBlock("fan", new FanBlock(FanBlockEntity::new), WOOL_ITEM_GROUP);
 
-	public static final BlockEntityType<TreeCutterBlockEntity> TREE_CUTTER_BLOCK_ENTITIY_BLOCK = addBlockEntity("tree_cutter", BlockEntityType.Builder.create(TreeCutterBlockEntity::new));
+	public static final BlockEntityType<TreeCutterBlockEntity> TREE_CUTTER_BLOCK_ENTITY = addBlockEntity("tree_cutter", BlockEntityType.Builder.create(TreeCutterBlockEntity::new));
 	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new));
 	public static final BlockEntityType<WoolCollectorBlockEntity> WOOL_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wool_collector", BlockEntityType.Builder.create(WoolCollectorBlockEntity::new));
 	public static final BlockEntityType<WoodCollectorBlockEntity> WOOD_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wood_collector", BlockEntityType.Builder.create(WoodCollectorBlockEntity::new));
-	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY= addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new));
+	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new));
 
-	public static final Identifier ADD_VELOCITY_TO_PLAYER = new Identifier(Wool.MODID, "add_player_velocity");
+	public static final Identifier ADD_VELOCITY_TO_PLAYER_PACKET = new Identifier(Wool.MODID, "add_player_velocity");
 
 	@Override
 	public void onInitialize() {

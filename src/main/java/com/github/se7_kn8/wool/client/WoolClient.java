@@ -19,7 +19,7 @@ public class WoolClient implements ClientModInitializer {
 		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wood_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 
-		ClientSidePacketRegistry.INSTANCE.register(Wool.ADD_VELOCITY_TO_PLAYER, (packetContext, packetByteBuf) -> {
+		ClientSidePacketRegistry.INSTANCE.register(Wool.ADD_VELOCITY_TO_PLAYER_PACKET, (packetContext, packetByteBuf) -> {
 			double velX = packetByteBuf.readDouble();
 			double velY = packetByteBuf.readDouble();
 			double velZ = packetByteBuf.readDouble();
