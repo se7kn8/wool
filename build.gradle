@@ -6,7 +6,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = "wool"
-version = "1.2.5-1.14"
+version = "1.2.6-1.14"
 
 minecraft {
 }
