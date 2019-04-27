@@ -6,6 +6,7 @@ import com.github.se7_kn8.wool.container.BlockEntityInventoryContainer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.screen.ContainerScreenFactory;
 import net.fabricmc.fabric.api.client.screen.ScreenProviderRegistry;
+import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.util.Identifier;
 
 @SuppressWarnings("unused") // Loaded by fabric-loader
@@ -18,6 +19,16 @@ public class WoolClient implements ClientModInitializer {
 		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wool_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 		ScreenProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "wood_collector"), createBasicInventoryGui(new Identifier("textures/gui/container/dispenser.png"))); // Use minecraft texture
 
+		ClientSidePacketRegistry.INSTANCE.register(Wool.ADD_VELOCITY_TO_PLAYER, (packetContext, packetByteBuf) -> {
+			double velX = packetByteBuf.readDouble();
+			double velY = packetByteBuf.readDouble();
+			double velZ = packetByteBuf.readDouble();
+
+			if (packetContext.getPlayer() != null && !packetContext.getPlayer().abilities.flying) {
+				packetContext.getPlayer().addVelocity(velX, velY, velZ);
+				packetContext.getPlayer().fallDistance = 0;
+			}
+		});
 	}
 
 	private <T extends BlockEntityInventoryContainer> ContainerScreenFactory<T> createBasicInventoryGui(Identifier identifier) {

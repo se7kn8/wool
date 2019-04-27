@@ -10,7 +10,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
-import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
@@ -125,18 +124,6 @@ public class Wool implements ModInitializer {
 			}
 			return null;
 		});
-
-		ClientSidePacketRegistry.INSTANCE.register(ADD_VELOCITY_TO_PLAYER, (packetContext, packetByteBuf) -> {
-			double velX = packetByteBuf.readDouble();
-			double velY = packetByteBuf.readDouble();
-			double velZ = packetByteBuf.readDouble();
-
-			if (packetContext.getPlayer() != null && !packetContext.getPlayer().abilities.flying) {
-				packetContext.getPlayer().addVelocity(velX, velY, velZ);
-				packetContext.getPlayer().fallDistance = 0;
-			}
-		});
-
 	}
 
 	private static <T extends BlockEntity> BlockEntityType<T> addBlockEntity(String name, BlockEntityType.Builder<T> blockEntityTypeBuilder) {
