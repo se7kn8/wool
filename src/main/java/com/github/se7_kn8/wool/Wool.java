@@ -1,5 +1,6 @@
 package com.github.se7_kn8.wool;
 
+import com.github.se7_kn8.wool.block.AlarmBlock;
 import com.github.se7_kn8.wool.block.BaseBlockWithEntity;
 import com.github.se7_kn8.wool.block.FanBlock;
 import com.github.se7_kn8.wool.block.ItemCollectorBlock;
@@ -15,6 +16,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.*;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -30,6 +32,7 @@ public class Wool implements ModInitializer {
 
 	private static final Map<Identifier, Item> ITEMS = new HashMap<>();
 	private static final Map<Identifier, Block> BLOCKS = new HashMap<>();
+	private static final Map<Identifier, SoundEvent> SOUND_EVENTS = new HashMap<>();
 	private static final Map<Identifier, BlockEntityType<? extends BlockEntity>> BLOCK_ENTITIES = new HashMap<>();
 
 	public static final Block TREE_CUTTER = addBlock("tree_cutter", new BaseBlockWithEntity<>(TreeCutterBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).lightLevel(0).build()), WOOL_ITEM_GROUP);
@@ -37,6 +40,7 @@ public class Wool implements ModInitializer {
 	public static final Block WOOL_COLLECTOR_BLOCK = addBlock("wool_collector", new ItemCollectorBlock<>(WoolCollectorBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).lightLevel(0).build()), WOOL_ITEM_GROUP);
 	public static final Block WOOD_COLLECTOR_BLOCK = addBlock("wood_collector", new ItemCollectorBlock<>(WoodCollectorBlockEntity::new, FabricBlockSettings.copy(Blocks.FURNACE).lightLevel(0).build()), WOOL_ITEM_GROUP);
 	public static final Block FAN_BLOCK = addBlock("fan", new FanBlock(FanBlockEntity::new), WOOL_ITEM_GROUP);
+	public static final Block ALARM_BLOCK = addBlock("alarm_block", new AlarmBlock(), WOOL_ITEM_GROUP);
 
 	public static final BlockEntityType<TreeCutterBlockEntity> TREE_CUTTER_BLOCK_ENTITY = addBlockEntity("tree_cutter", BlockEntityType.Builder.create(TreeCutterBlockEntity::new));
 	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new));
@@ -45,6 +49,8 @@ public class Wool implements ModInitializer {
 	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new));
 
 	public static final Identifier ADD_VELOCITY_TO_PLAYER_PACKET = new Identifier(Wool.MODID, "add_player_velocity");
+
+	public static final SoundEvent ALARM_SOUND_EVENT = addSoundEvent("block.alarm.sound");
 
 	@Override
 	public void onInitialize() {
@@ -60,6 +66,10 @@ public class Wool implements ModInitializer {
 
 		for (Identifier identifier : BLOCK_ENTITIES.keySet()) {
 			Registry.register(Registry.BLOCK_ENTITY, identifier, BLOCK_ENTITIES.get(identifier));
+		}
+
+		for (Identifier identifier : SOUND_EVENTS.keySet()) {
+			Registry.register(Registry.SOUND_EVENT, identifier, SOUND_EVENTS.get(identifier));
 		}
 
 		ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier(Wool.MODID, "shearer"), (syncId, identifier, player, buf) -> {
@@ -124,6 +134,12 @@ public class Wool implements ModInitializer {
 			}
 			return null;
 		});
+	}
+
+	private static SoundEvent addSoundEvent(String name) {
+		SoundEvent event = new SoundEvent(new Identifier(Wool.MODID, name));
+		Wool.SOUND_EVENTS.put(new Identifier(Wool.MODID, name), event);
+		return event;
 	}
 
 	private static <T extends BlockEntity> BlockEntityType<T> addBlockEntity(String name, BlockEntityType.Builder<T> blockEntityTypeBuilder) {

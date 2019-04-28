@@ -1,0 +1,11 @@
+{
+  "block.alarm.sound": {
+    "sounds": [
+      {
+        "name": "wool:block/alarm",
+        "stream": true
+      }
+    ],
+    "subtitle": "subtitles.block.alarm.sound"
+  }
+}

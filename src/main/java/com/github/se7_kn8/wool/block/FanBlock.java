@@ -1,5 +1,6 @@
 package com.github.se7_kn8.wool.block;
 
+import com.github.se7_kn8.wool.block.entity.FanBlockEntity;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -15,16 +16,11 @@ import net.minecraft.util.math.Direction;
 
 import java.util.function.Supplier;
 
-public class FanBlock extends BaseBlockWithEntity {
-	public static final DirectionProperty DIRECTION;
-	public static final BooleanProperty ACTIVE;
+public class FanBlock extends BaseBlockWithEntity<FanBlockEntity> {
+	public static final DirectionProperty DIRECTION = Properties.FACING;
+	public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
-	static {
-		DIRECTION = Properties.FACING;
-		ACTIVE = BooleanProperty.create("active");
-	}
-
-	public FanBlock(Supplier blockEntitySupplier) {
+	public FanBlock(Supplier<FanBlockEntity> blockEntitySupplier) {
 		super(blockEntitySupplier, FabricBlockSettings.of(Material.STONE).build());
 		this.setDefaultState(this.stateFactory.getDefaultState().with(DIRECTION, Direction.NORTH).with(ACTIVE, false));
 	}
