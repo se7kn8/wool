@@ -41,7 +41,7 @@ public class FanBlock extends BaseBlockWithEntity {
 
 	@Override
 	protected void appendProperties(StateFactory.Builder<Block, BlockState> builder) {
-		builder.with(DIRECTION, ACTIVE);
+		builder.add(DIRECTION, ACTIVE);
 	}
 
 	@Override
