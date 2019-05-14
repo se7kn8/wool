@@ -7,8 +7,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public abstract class ItemCollectorContainer extends BlockEntityInventoryContainer {
 
@@ -70,7 +70,7 @@ public abstract class ItemCollectorContainer extends BlockEntityInventoryContain
 	protected abstract String getName();
 
 	@Override
-	public TextComponent getTextComponent() {
-		return new TranslatableTextComponent("container." + Wool.MODID + "." + getName());
+	public Component getTextComponent() {
+		return new TranslatableComponent("container." + Wool.MODID + "." + getName());
 	}
 }

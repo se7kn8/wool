@@ -42,11 +42,11 @@ public class Wool implements ModInitializer {
 	public static final Block FAN_BLOCK = addBlock("fan", new FanBlock(FanBlockEntity::new), WOOL_ITEM_GROUP);
 	public static final Block ALARM_BLOCK = addBlock("alarm_block", new AlarmBlock(), WOOL_ITEM_GROUP);
 
-	public static final BlockEntityType<TreeCutterBlockEntity> TREE_CUTTER_BLOCK_ENTITY = addBlockEntity("tree_cutter", BlockEntityType.Builder.create(TreeCutterBlockEntity::new));
-	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new));
-	public static final BlockEntityType<WoolCollectorBlockEntity> WOOL_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wool_collector", BlockEntityType.Builder.create(WoolCollectorBlockEntity::new));
-	public static final BlockEntityType<WoodCollectorBlockEntity> WOOD_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wood_collector", BlockEntityType.Builder.create(WoodCollectorBlockEntity::new));
-	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new));
+	public static final BlockEntityType<TreeCutterBlockEntity> TREE_CUTTER_BLOCK_ENTITY = addBlockEntity("tree_cutter", BlockEntityType.Builder.create(TreeCutterBlockEntity::new, TREE_CUTTER));
+	public static final BlockEntityType<ShearerBlockEntity> SHEEP_SHAVER_BLOCK_ENTITY = addBlockEntity("shearer", BlockEntityType.Builder.create(ShearerBlockEntity::new, SHEEP_SHAVER_BLOCK));
+	public static final BlockEntityType<WoolCollectorBlockEntity> WOOL_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wool_collector", BlockEntityType.Builder.create(WoolCollectorBlockEntity::new, WOOL_COLLECTOR_BLOCK));
+	public static final BlockEntityType<WoodCollectorBlockEntity> WOOD_COLLECTOR_BLOCK_ENTITY = addBlockEntity("wood_collector", BlockEntityType.Builder.create(WoodCollectorBlockEntity::new, WOOD_COLLECTOR_BLOCK));
+	public static final BlockEntityType<FanBlockEntity> FAN_BLOCK_ENTITY = addBlockEntity("fan", BlockEntityType.Builder.create(FanBlockEntity::new, FAN_BLOCK));
 
 	public static final Identifier ADD_VELOCITY_TO_PLAYER_PACKET = new Identifier(Wool.MODID, "add_player_velocity");
 
