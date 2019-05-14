@@ -41,6 +41,6 @@ public class AlarmBlock extends Block {
 
 	@Override
 	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-		stateFactory$Builder_1.with(POWERED);
+		stateFactory$Builder_1.add(POWERED);
 	}
 }
