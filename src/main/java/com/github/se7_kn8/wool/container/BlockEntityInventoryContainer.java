@@ -2,7 +2,7 @@ package com.github.se7_kn8.wool.container;
 
 import net.minecraft.container.Container;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.text.TextComponent;
+import net.minecraft.network.chat.Component;
 
 public abstract class BlockEntityInventoryContainer extends Container {
 
@@ -13,7 +13,7 @@ public abstract class BlockEntityInventoryContainer extends Container {
 		this.playerInventory = inventory;
 	}
 
-	public abstract TextComponent getTextComponent();
+	public abstract Component getTextComponent();
 
 	public PlayerInventory getPlayerInventory() {
 		return playerInventory;
